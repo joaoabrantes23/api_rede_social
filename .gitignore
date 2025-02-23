@@ -1,0 +1,5 @@
+.dockerignore
+instance/
+
+venv/
+__pycache__/
