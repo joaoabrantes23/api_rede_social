@@ -1,5 +1,5 @@
-from settings.db import db
-from models import UserModel
+from ..settings.db import db
+from ..models import UserModel
 from passlib.hash import pbkdf2_sha256
 
 def create_admin():

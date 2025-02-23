@@ -4,10 +4,10 @@ from flask_smorest import Blueprint, abort
 from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt, get_jwt_identity
 
-from settings.db import db
-from models import UserModel    
-from schemas import UserSchema, PlainUserSchema, UserUpdateSchema
-from utils.check_permissions import check_permissions
+from ..settings.db import db
+from ..models import UserModel    
+from ..schemas import UserSchema, PlainUserSchema, UserUpdateSchema
+from ..utils.check_permissions import check_permissions
 
 blp = Blueprint("Users", "users", description="Operações com usuarios")
 

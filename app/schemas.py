@@ -25,7 +25,7 @@ class UserUpdateSchema(PlainUserSchema):
 
 """Post Schemas"""
 class PostSchema(PlainPostSchema):
-    user_id = fields.Int(required=True, load_only=True)
+    # user_id = fields.Int(required=True, load_only=True)
     user = fields.Nested(UserPublicSchema, dump_only=True)
 
 class PostUpdateSchema(PlainPostSchema):

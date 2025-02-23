@@ -1,4 +1,4 @@
-from settings.db import db
+from ..settings.db import db
 
 class UserModel(db.Model):
     __tablename__ = "users"
@@ -7,7 +7,7 @@ class UserModel(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
-    posts = db.relationship("PostModel", back_populates="user", lazy="dynamic")
+    posts = db.relationship("PostModel", back_populates="user", lazy="dynamic", cascade="all, delete")
 
     def __repr__(self):
         return f"<User {self.username}>"

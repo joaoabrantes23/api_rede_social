@@ -3,10 +3,10 @@ from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
 from flask_jwt_extended import jwt_required, get_jwt, get_jwt_identity
 from flask import jsonify
-from settings.db import db
-from models import PostModel
-from schemas import PostSchema, PostUpdateSchema, PlainPostSchema
-from utils.check_permissions import check_permissions
+from ..settings.db import db
+from ..models import PostModel
+from ..schemas import PostSchema, PostUpdateSchema, PlainPostSchema
+from ..utils.check_permissions import check_permissions
 
 
 blp =  Blueprint("Posts", "posts", description="Operações com posts")
@@ -22,6 +22,9 @@ class Post(MethodView):
     @blp.arguments(PostSchema)
     @blp.response(201, PostSchema)
     def post(self, post_data): #CRIAR UM POST
+        #passand o id do token para o post
+        logged_user_id = get_jwt_identity()
+        post_data["user_id"] = logged_user_id
         post = PostModel(**post_data)
         try:
             db.session.add(post)

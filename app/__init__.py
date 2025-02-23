@@ -5,13 +5,13 @@ from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 
-from utils.init_admin import create_admin
-from settings.db import db
-from settings.config import Config
-import models
+from .utils.init_admin import create_admin
+from .settings.db import db
+from .settings.config import Config
+from . import models
 
-from routes.user_routes import blp as UserBlueprint
-from routes.post_routes import blp as PostBlueprint
+from .routes.user_routes import blp as UserBlueprint
+from .routes.post_routes import blp as PostBlueprint
 
 
 def create_app(db_url=None):
