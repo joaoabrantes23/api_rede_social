@@ -66,9 +66,9 @@ Com a aplicação dockerizada, não é necessário instalar as dependências dir
    ```bash
    docker-compose up --build
 
-4. Caso não precise recompilar as imagens, execute o comando sem o --build:
+4. Após o build, execute:
    ```bash
-   docker-compose up
+   docker-compose up -d
 
 5. Após isso a API estará acessível.
 
